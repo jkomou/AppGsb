@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1.Views.Acceuil2"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core" xmlns:xc="clr-namespace:XCalendar.Forms.Views;assembly=XCalendar.Forms" xmlns:local="clr-namespace:App1.Views"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            BarBackgroundColor="Orange"
+            >
+  <!--Mail-->
+    <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 Title="Mail"
+                 IconImageSource="@drawable/mail.png">
+
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Start">
+
+            <Label Margin="0,0,0,10" Text="Envoyer un mail à notre service client" FontAttributes="Bold" FontSize="Large" TextColor="#CA6F1E" HorizontalTextAlignment="Center"/>
+            <Label Text="To"/>
+            <Entry x:Name="Email" Keyboard="Email" Placeholder="someone@example.com" TextChanged="ValidateEmail"></Entry>
+
+            <Label Text="Subjet"/>
+            <Entry x:Name="Sujet" Placeholder="Sujet"></Entry>
+
+            <Label Text="Body" />
+            <Editor x:Name="Body" Keyboard="Email" HeightRequest="200" ></Editor>
+            <Button x:Name="btnSend" Text="Send" />
+        </StackLayout>
+    </ContentPage>
+    <!--Calendrier-->
+    <ContentPage Title="Calendrier" IconImageSource="@drawable/rendez_vous.png">
+        <StackLayout>
+            <xc:CalendarView x:Name="calendar"/>
+        </StackLayout>
+    </ContentPage>
+    <!--Acceuil-->
+    <ContentPage IconImageSource="@drawable/home.png" Title="Acceuil" >
+        <StackLayout>
+            <Label Text="Bienvenue sur GSBApp"
+                   FontSize="Title"
+                   HorizontalOptions="Center"/>
+            <Button Text="Deconnexion" Clicked="Logout_Clicked" WidthRequest="50"></Button>
+        </StackLayout>
+
+    </ContentPage>
+    <!--Docteurs-->
+    <ContentPage Title="Docteurs" IconImageSource="@drawable/medecin.png">
+        <ContentPage.BindingContext>
+            <local:AcceuilViewModel/>
+        </ContentPage.BindingContext>
+    <ContentPage.Content>
+            <StackLayout>
+                <Entry Placeholder="Doctor Name" Text="{Binding DoctorName}"></Entry>
+                <Button Text="Add" Command="{Binding AddDoctorCommand}"></Button>
+                <Button Text="Remove" Command="{Binding RemoveDoctorCommand}"></Button>
+                <Button Text="Udapte" Command="{Binding UdapteDoctorCommand}"></Button>
+                <ListView x:Name="lvDoctors" ItemsSource="{Binding Doctors}" SelectedItem="{Binding SelectedDoctor}"></ListView>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+</TabbedPage>
+    

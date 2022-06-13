@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1.MainPage">
+    <StackLayout>
+
+        <Image Source="@drawable/logo_login"
+               HorizontalOptions="Center"/>
+
+        <Label Text="Pour rendre ta vie meilleure !"
+               FontSize="Large"
+               HorizontalOptions="Center"/>
+
+        <Button Text="Demarrer"
+                x:Name="Demarrer"
+                Clicked="Login_Clicked"
+                BackgroundColor="Red"
+                Margin="0,50,0,0"
+                CornerRadius="10"
+                BorderColor="Black"
+                BorderWidth="2"/>
+
+    </StackLayout>
+</ContentPage>
